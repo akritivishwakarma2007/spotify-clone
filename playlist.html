@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Playlist</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background: #121212;
+      color: #fff;
+    }
+
+    .nav-link {
+      display: inline-block;
+      margin: 20px;
+      padding: 8px 16px;
+      background: #1db954;
+      color: #000;
+      text-decoration: none;
+      border-radius: 20px;
+      font-size: 14px;
+      transition: background 0.2s ease;
+    }
+
+    .nav-link:hover {
+      background: #1ed760;
+    }
+
+    .playlist-form {
+      padding: 20px;
+    }
+
+    .playlist-form h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .playlist-form input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      background: #282828;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    .playlist-form button {
+      background: #1db954;
+      color: #000;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .playlist-form button:hover {
+      background: #1ed760;
+    }
+
+    .songList {
+      padding: 20px;
+    }
+
+    .songList h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .songList ul {
+      list-style: none;
+    }
+
+    .songList li {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      margin: 5px 0;
+      background: #282828;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .songList li:hover {
+      background: #3a3a3a;
+    }
+
+    .songList img {
+      margin-right: 10px;
+    }
+
+    .info {
+      flex: 1;
+    }
+
+    .playnow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .cardContainer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px;
+      justify-content: center;
+    }
+
+    .card {
+      background: #181818;
+      border-radius: 10px;
+      padding: 15px;
+      width: 200px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      position: relative;
+    }
+
+    .card:hover {
+      background: #282828;
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .card h2 {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #b3b3b3;
+    }
+
+    .play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #1db954;
+      border-radius: 50%;
+      padding: 10px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .card:hover .play {
+      opacity: 1;
+    }
+
+    .playbar {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      background: #282828;
+      padding: 15px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .songinfo {
+      flex: 1;
+      font-size: 14px;
+    }
+
+    .songtime {
+      font-size: 14px;
+      color: #b3b3b3;
+    }
+
+    .seekbar {
+      flex: 2;
+      height: 4px;
+      background: #535353;
+      border-radius: 2px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .circle {
+      width: 12px;
+      height: 12px;
+      background: #fff;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 0;
+      transition: left 0.1s linear;
+    }
+
+    .songbuttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .songbuttons img {
+      height: 24px;
+      filter: invert(1);
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .songbuttons img:hover {
+      transform: scale(1.1);
+    }
+
+    .volume {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .volume img {
+      height: 24px;
+      filter: invert(1);
+      cursor: pointer;
+    }
+
+    .range input {
+      width: 100px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        width: 150px;
+      }
+
+      .playbar {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .seekbar {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="nav-link">Back to Library</a>
+  <div class="playlist-form">
+    <h2>Create Playlist</h2>
+    <input type="text" placeholder="Playlist Name" aria-label="Playlist name">
+    <button class="save-playlist">Save</button>
+  </div>
+  <div class="songList">
+    <h2>Playlist</h2>
+    <ul></ul>
+  </div>
+  <div class="cardContainer"></div>
+  <div class="playbar">
+    <div class="songinfo">Song Name</div>
+    <div class="seekbar" role="slider" aria-label="Seek bar">
+      <div class="circle"></div>
+    </div>
+    <div class="songtime">00:00 / 00:00</div>
+    <div class="songbuttons">
+      <img id="previous" src="svgs\previous.svg" alt="Previous song" aria-label="Previous song">
+      <img id="play" src="svgs\play.svg" alt="Play or pause" aria-label="Play or pause">
+      <img id="next" src="svgs\next.svg" alt="Next song" aria-label="Next song">
+    </div>
+    <div class="volume">
+      <img src="svgs\volume.svg" alt="Volume control" aria-label="Mute or unmute">
+      <div class="range">
+        <input type="range" min="0" max="100" value="50" aria-label="Volume slider">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentSong = new Audio();
+    let songs = [];
+    let currFolder = '';
+    // Set the base URL for song paths
+    const baseUrl = 'http://127.0.0.1:3000/';
+
+    function secondsToMinutesSeconds(seconds) {
+      if (isNaN(seconds) || seconds < 0) return '00:00';
+      const minutes = Math.floor(seconds / 60);
+      const remainingSeconds = Math.floor(seconds % 60);
+      return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+    }
+
+    async function getSongs(folder) {
+      try {
+        currFolder = folder;
+        const response = await fetch(`${baseUrl}${folder}/`);
+        if (!response.ok) throw new Error('Failed to fetch songs');
+        const text = await response.text();
+        const div = document.createElement('div');
+        div.innerHTML = text;
+        const as = div.getElementsByTagName('a');
+        songs = Array.from(as)
+          .filter(a => a.href.endsWith('.mp3'))
+          .map(a => decodeURIComponent(a.href.split(`/${folder}/`)[1]));
+
+        const songUL = document.querySelector('.songList ul');
+        songUL.innerHTML = songs.length
+          ? songs.map(song => `
+              <li>
+                <img class="invert" width="34" src="svgs\music.svg" alt="Music icon">
+                <div class="info">
+                  <div>${song.replaceAll('%20', ' ')}</div>
+                  <div>Harry</div>
+                </div>
+                <div class="playnow">
+                  <span>Play Now</span>
+                  <img class="invert" src="svgs/play.svg" alt="Play icon">
+                </div>
+              </li>
+            `).join('')
+          : '<li>No songs available</li>';
+
+        return songs;
+      } catch (error) {
+        console.error('Error fetching songs:', error);
+        document.querySelector('.songList ul').innerHTML = '<li>Error loading songs</li>';
+        return [];
+      }
+    }
+
+    function playMusic(track, pause = false) {
+      if (!track) return;
+      currentSong.src = `${baseUrl}${currFolder}/${encodeURIComponent(track)}`;
+      document.querySelector('.songinfo').textContent = decodeURIComponent(track);
+      document.querySelector('.songtime').textContent = '00:00 / 00:00';
+      if (!pause && currentSong.src) {
+        currentSong.play().catch(error => console.error('Playback error:', error));
+        document.querySelector('#play').src = 'svgs/pause.svg';
+      }
+    }
+
+    async function displayAlbums() {
+      try {
+        const response = await fetch(`${baseUrl}songs/`);
+        if (!response.ok) throw new Error('Failed to fetch albums');
+        const text = await response.text();
+        const div = document.createElement('div');
+        div.innerHTML = text;
+        const anchors = Array.from(div.getElementsByTagName('a'))
+          .filter(a => a.href.includes('/songs') && !a.href.includes('.htaccess'));
+
+        const cardContainer = document.querySelector('.cardContainer');
+        cardContainer.innerHTML = '';
+        for (const anchor of anchors) {
+          const folder = anchor.href.split('/').slice(-2)[0];
+          try {
+            const metadata = await (await fetch(`${baseUrl}songs/${folder}/info.json`)).json();
+            cardContainer.innerHTML += `
+              <div data-folder="${folder}" class="card">
+                <div class="play">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 20V4L19 12L5 20Z" stroke="#141B34" fill="#000" stroke-width="1.5" stroke-linejoin="round" />
+                  </svg>
+                </div>
+                <img src="${baseUrl}songs/${folder}/cover.jpg" alt="${metadata.title} cover">
+                <h2>${metadata.title || 'Unknown Album'}</h2>
+                <p>${metadata.description || 'No description'}</p>
+              </div>`;
+          } catch (error) {
+            console.warn(`Failed to load metadata for ${folder}:`, error);
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching albums:', error);
+        document.querySelector('.cardContainer').innerHTML = '<p>Error loading albums</p>';
+      }
+    }
+
+    function setupEventListeners() {
+      const playButton = document.querySelector('#play');
+      const previousButton = document.querySelector('#previous');
+      const nextButton = document.querySelector('#next');
+      const seekbar = document.querySelector('.seekbar');
+      const volumeImg = document.querySelector('.volume > img');
+      const volumeRange = document.querySelector('.range input');
+      const savePlaylistButton = document.querySelector('.save-playlist');
+      let lastVolume = 0.5;
+
+      if (savePlaylistButton) {
+        savePlaylistButton.addEventListener('click', () => {
+          const playlistName = document.querySelector('.playlist-form input').value;
+          console.log(`Creating playlist: ${playlistName}`);
+          // Add playlist creation logic here (e.g., save to localStorage or server)
+        });
+      }
+
+      playButton.addEventListener('click', () => {
+        if (currentSong.paused && currentSong.src) {
+          currentSong.play().catch(error => console.error('Playback error:', error));
+          playButton.src = 'svgs/pause.svg';
+        } else {
+          currentSong.pause();
+          playButton.src = 'svgs/play.svg';
+        }
+      });
+
+      currentSong.addEventListener('timeupdate', () => {
+        if (!isNaN(currentSong.duration)) {
+          document.querySelector('.songtime').textContent = `${secondsToMinutesSeconds(currentSong.currentTime)} / ${secondsToMinutesSeconds(currentSong.duration)}`;
+          document.querySelector('.circle').style.left = `${(currentSong.currentTime / currentSong.duration) * 100}%`;
+        }
+      });
+
+      currentSong.addEventListener('ended', () => {
+        const index = songs.indexOf(decodeURIComponent(currentSong.src.split('/').slice(-1)[0]));
+        if (index + 1 < songs.length) {
+          playMusic(songs[index + 1]);
+        } else {
+          currentSong.pause();
+          playButton.src = 'svgs/play.svg';
+        }
+      });
+
+      seekbar.addEventListener('click', e => {
+        if (!isNaN(currentSong.duration)) {
+          const percent = (e.offsetX / e.target.getBoundingClientRect().width) * 100;
+          document.querySelector('.circle').style.left = `${percent}%`;
+          currentSong.currentTime = (currentSong.duration * percent) / 100;
+        }
+      });
+
+      previousButton.addEventListener('click', () => {
+        const index = songs.indexOf(decodeURIComponent(currentSong.src.split('/').slice(-1)[0]));
+        if (index - 1 >= 0) {
+          playMusic(songs[index - 1]);
+        }
+      });
+
+      nextButton.addEventListener('click', () => {
+        const index = songs.indexOf(decodeURIComponent(currentSong.src.split('/').slice(-1)[0]));
+        if (index + 1 < songs.length) {
+          playMusic(songs[index + 1]);
+        }
+      });
+
+      volumeRange.addEventListener('input', e => {
+        const volume = parseInt(e.target.value) / 100;
+        currentSong.volume = volume;
+        if (volume > 0) {
+          volumeImg.src = 'svgs/volume.svg';
+          lastVolume = volume;
+        } else {
+          volumeImg.src = 'svgs/mute.svg';
+        }
+      });
+
+      volumeImg.addEventListener('click', () => {
+        if (currentSong.volume > 0) {
+          volumeImg.src = 'svgs/mute.svg';
+          currentSong.volume = 0;
+          volumeRange.value = 0;
+        } else {
+          volumeImg.src = 'svgs/volume.svg';
+          currentSong.volume = lastVolume;
+          volumeRange.value = lastVolume * 100;
+        }
+      });
+
+      document.querySelector('.songList ul').addEventListener('click', e => {
+        const li = e.target.closest('li');
+        if (li) {
+          const track = li.querySelector('.info').firstElementChild.textContent.trim();
+          playMusic(track);
+        }
+      });
+
+      document.querySelector('.cardContainer').addEventListener('click', async e => {
+        const card = e.target.closest('.card');
+        if (card) {
+          const folder = card.dataset.folder;
+          songs = await getSongs(`songs/${folder}`);
+          if (songs.length) playMusic(songs[0]);
+        }
+      });
+    }
+
+    async function main() {
+      // Set the initial song folder here
+      await getSongs('songs/ncs'); // Adjust to 'songs/' if no subfolder
+      if (songs.length) playMusic(songs[0], true);
+      await displayAlbums();
+      setupEventListeners();
+    }
+
+    main().catch(error => console.error('Initialization error:', error));
+  </script>
+</body>
+</html>

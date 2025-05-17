@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="inhance.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="upper">
+        <div class="box">
+          <img class="logo" src="svgs/logo.svg" alt="Spotify" />
+        </div>
+
+        <div class="box1">
+          <button class="home">
+            <img src="svgs/home.svg" alt="Home" />
+          </button>
+        </div>
+
+        <div class="search-here">
+          <div class="search">
+            <form>
+              <div class="search-logo">
+                <img src="svgs/search.svg" alt="Search" />
+              </div>
+              <div>
+                <input
+                  class="searchbar"
+                  type="search"
+                  placeholder="What do you want to play?"
+                />
+              </div>
+              <div class="cart">
+                <img src="svgs/cart.svg" alt="Cart" />
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="btn-container">
+          <button class="btn btn01">Premium</button>
+          <button class="btn btn02">Support</button>
+          <button class="btn btn03">Download</button>
+          <span class="Install">Install App</span>
+          <div class="log-sign">
+            <button class="btn2 sign">Sign in</button>
+            <button class="btn2 log">Log in</button>
+          </div>
+        </div>
+      </div>
+      <!-- ---------------------------------------*******************----------------------------------------------- -->
+
+      <div class="hugecontainer">
+        <div class="left-container">
+          <div class="left">
+            <div class="child-container1">
+              <header class="library">Your Library</header>
+              <span class="plus"
+                >
+                 <button class="plus1">
+                  <img  style="height: 20px; width: 20px;""
+                  src="svgs\plus.svg" alt="" />
+                </button>
+                <button class="hamburger plus1" aria-label="Open menu">
+                  <img  style="height: 20px; width: 20px;""
+                  src="svgs\hamburger.svg" alt="Menu icon" />
+                </button>
+                
+              </span>
+            </div>
+
+            <div class="child-container2">
+              <div class="left1">
+                <button class="close" aria-label="Close menu">
+                  <img src="img/close.svg" alt="Close icon" />
+                </button>
+                <a href="playlist.html" class="nav-link">Create Playlist</a>
+                <div class="songList">
+                  <h2>Playlist</h2>
+                  <ul></ul>
+                </div>
+              </div>
+              <div class="cardContainer"></div>
+
+              <div class="playbar">
+                <div class="songinfo">Song Name</div>
+                <div class="seekbar" role="slider" aria-label="Seek bar">
+                  <div class="circle"></div>
+                </div>
+                <div class="songtime">00:00 / 00:00</div>
+                <div class="songbuttons">
+                  <img
+                    id="previous"
+                    src="svgs/previous.svg"
+                    alt="Previous song"
+                    aria-label="Previous song"
+                  />
+                  <img
+                    id="play"
+                    src="svgs/play.svg"
+                    alt="Play or pause"
+                    aria-label="Play or pause"
+                  />
+                  <img
+                    id="next"
+                    src="svgs/next.svg"
+                    alt="Next song"
+                    aria-label="Next song"
+                  />
+                </div>
+                <div class="volume">
+                  <img
+                    src="svgs/volume.svg"
+                    alt="Volume control"
+                    aria-label="Mute or unmute"
+                  />
+                  <div class="range">
+                    <input
+                      type="range"
+                      min="0"
+                      max="100"
+                      value="50"
+                      aria-label="Volume slider"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="child-container3">
+              <ul>
+                <li>
+                  <a href="https://www.spotify.com/in-en/legal/">Legal</a>
+                </li>
+                <li>
+                  <a href="https://www.spotify.com/in-en/safetyandprivacy/"
+                    >Safety & Privacy Center</a
+                  >
+                </li>
+                <li>
+                  <a href="https://www.spotify.com/in-en/legal/privacy-policy/"
+                    >Privacy Policy</a
+                  >
+                </li>
+                <li>
+                  <a href="https://www.spotify.com/in-en/legal/cookies-policy/"
+                    >Cookies</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.spotify.com/in-en/legal/privacy-policy/#s3"
+                    >About Ads</a
+                  >
+                </li>
+                <li>
+                  <a href="https://www.spotify.com/in-en/accessibility/"
+                    >Accessibility</a
+                  >
+                </li>
+              </ul>
+              <ul>
+                <li class="cookies">
+                  <a href="https://www.spotify.com/in-en/legal/cookies-policy/"
+                    >Cookies</a
+                  >
+                </li>
+                <li><button class="eng">English</button></li>
+              </ul>
+            </div>
+            </div>
+
+          
+          </div>
+          <!-- ----------------------------******************----------------------------- -->
+          <div class="right">
+            <div class="recently-played">
+              <div class="section-header">
+                <h2>Recently played</h2>
+                <a href="#">Show all</a>
+              </div>
+              <div class="card-grid">
+                <div class="card">
+                  <div class="card-img">
+                    <img
+                      src="https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228"
+                      alt="Album cover"
+                    />
+                    <div class="play-button">▶</div>
+                  </div>
+                  <h3>Blinding Lights</h3>
+                  <p>The Weeknd • After Hours</p>
+                </div>
+                <div class="card">
+                  <div class="card-img">
+                    <img
+                      src=" https://i.scdn.co/image/ab67616d00001e02c5916e3519b5c126a7953b27"
+                      alt="Album cover"
+                    />
+                    <div class="play-button">▶</div>
+                  </div>
+                  <h3>Save Your Tears</h3>
+                  <p>The Weeknd • After Hours</p>
+                </div>
+                <div class="card">
+                  <div class="card-img">
+                    <img
+                      src="https://i.scdn.co/image/ab67616d00001e029ad3e9959f48d513886b8933"
+                      alt="Album cover"
+                    />
+                    <div class="play-button">▶</div>
+                  </div>
+                  <h3>Levitating</h3>
+                  <p>Dua Lipa • Future Nostalgia</p>
+                </div>
+                <div class="card">
+                  <div class="card-img">
+                    <img
+                      src="https://i.scdn.co/image/ab67616d00001e02a991995542d50a691b9ae5be"
+                      alt="Album cover"
+                    />
+                    <div class="play-button">▶</div>
+                  </div>
+                  <h3>Stay</h3>
+                  <p>The Kid LAROI, Justin Bieber • F*CK LOVE 3: OVER YOU</p>
+                </div>
+                <div class="card">
+                  <div class="card-img">
+                    <img
+                      src="https://i.scdn.co/image/ab67616d00001e02d5f9985d59e4ae5cfe0b9a0c"
+                      alt="Album cover"
+                    />
+                    <div class="play-button">▶</div>
+                  </div>
+                  <h3>good 4 u</h3>
+                  <p>Olivia Rodrigo • SOUR</p>
+                </div>
+                <div class="card">
+                  <div class="card-img">
+                    <img
+                      src="https://i.scdn.co/image/ab67616d00001e02b1c4b76e23414c9f20242268"
+                      alt="Album cover"
+                    />
+                    <div class="play-button">▶</div>
+                  </div>
+                  <h3>Montero</h3>
+                  <p>Lil Nas X • MONTERO</p>
+                </div>
+              </div>
+            </div>
+            <div class="made-for-you">
+              <div class="section-header">
+                <h2>Made For You</h2>
+                <a href="#">Show all</a>
+              </div>
+              <div class="large-card-grid">
+                <div class="large-card">
+                  <div class="large-card-img">
+                    <img
+                      src="https://seed-mix-image.spotifycdn.com/v6/img/artist/1Xyo4u8uXC1ZmMpatF05PJ/en/default"
+                      alt="Playlist cover"
+                    />
+                  </div>
+                  <h3>Daily Mix 1</h3>
+                  <p>
+                    Made for you based on your listening history, featuring The
+                    Weeknd, Dua Lipa and more
+                  </p>
+                </div>
+                <div class="large-card">
+                  <div class="large-card-img">
+                    <img
+                      src="https://seed-mix-image.spotifycdn.com/v6/img/artist/06HL4z0CvFAxyc27GXpf02/en/default"
+                      alt="Playlist cover"
+                    />
+                  </div>
+                  <h3>Daily Mix 2</h3>
+                  <p>
+                    Made for you based on your listening history, featuring
+                    Taylor Swift, Ed Sheeran and more
+                  </p>
+                </div>
+                <div class="large-card">
+                  <div class="large-card-img">
+                    <img
+                      src="https://seed-mix-image.spotifycdn.com/v6/img/artist/6eUKZXaKkcviH0Ku9w2n3V/en/default"
+                      alt="Playlist cover"
+                    />
+                  </div>
+                  <h3>Discover Weekly</h3>
+                  <p>
+                    Your weekly mixtape of fresh music - enjoy new discoveries
+                    and deep cuts picked just for you
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Player Bar -->
+          <!-- <div class="player-bar">
+            <div class="now-playing">
+              <img
+                src="https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228"
+                alt="Now playing"
+              />
+              <div class="song-info">
+                <h4>Blinding Lights</h4>
+                <p>The Weeknd</p>
+              </div>
+              <button>♥</button>
+            </div>
+
+            <div class="player-controls">
+              <div class="control-buttons">
+                <button>🔀</button>
+                <button>⏮</button>
+                <button class="play-pause">▶</button>
+                <button>⏭</button>
+                <button>🔁</button>
+              </div>
+              <div class="progress-bar">
+                <span class="progress-time">1:23</span>
+                <div class="progress-container">
+                  <div class="progress"></div>
+                </div>
+                <span class="progress-time">3:20</span>
+              </div>
+            </div>
+
+            <div class="other-controls">
+              <button>🎤</button>
+              <button>📱</button>
+              <button>🔉</button>
+              <div class="volume-container">
+                <button>🔊</button>
+                <div class="volume-slider">
+                  <div class="volume-progress"></div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
+<!-- xmlns="http://www.w3.org/2000/svg"> -->
