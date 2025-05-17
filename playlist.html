@@ -276,12 +276,12 @@
     </div>
     <div class="songtime">00:00 / 00:00</div>
     <div class="songbuttons">
-      <img id="previous" src="svgs\previous.svg" alt="Previous song" aria-label="Previous song">
-      <img id="play" src="svgs\play.svg" alt="Play or pause" aria-label="Play or pause">
-      <img id="next" src="svgs\next.svg" alt="Next song" aria-label="Next song">
+      <img id="previous" src="svgs/previous.svg" alt="Previous song" aria-label="Previous song">
+      <img id="play" src="svgs/play.svg" alt="Play or pause" aria-label="Play or pause">
+      <img id="next" src="svgs/next.svg" alt="Next song" aria-label="Next song">
     </div>
     <div class="volume">
-      <img src="svgs\volume.svg" alt="Volume control" aria-label="Mute or unmute">
+      <img src="svgs/volume.svg" alt="Volume control" aria-label="Mute or unmute">
       <div class="range">
         <input type="range" min="0" max="100" value="50" aria-label="Volume slider">
       </div>
@@ -319,7 +319,7 @@
         songUL.innerHTML = songs.length
           ? songs.map(song => `
               <li>
-                <img class="invert" width="34" src="svgs\music.svg" alt="Music icon">
+                <img class="invert" width="34" src="svgs/music.svg" alt="Music icon">
                 <div class="info">
                   <div>${song.replaceAll('%20', ' ')}</div>
                   <div>Harry</div>
@@ -366,7 +366,7 @@
         for (const anchor of anchors) {
           const folder = anchor.href.split('/').slice(-2)[0];
           try {
-            const metadata = await (await fetch(`${baseUrl}songs/${folder}/info.json`)).json();
+            const metadata = await (await fetch(`package.json`)).json();
             cardContainer.innerHTML += `
               <div data-folder="${folder}" class="card">
                 <div class="play">
@@ -374,7 +374,7 @@
                     <path d="M5 20V4L19 12L5 20Z" stroke="#141B34" fill="#000" stroke-width="1.5" stroke-linejoin="round" />
                   </svg>
                 </div>
-                <img src="${baseUrl}songs/${folder}/cover.jpg" alt="${metadata.title} cover">
+                <img src="${baseUrl}songs/svgs/cover.jpg" alt="${metadata.title} cover">
                 <h2>${metadata.title || 'Unknown Album'}</h2>
                 <p>${metadata.description || 'No description'}</p>
               </div>`;

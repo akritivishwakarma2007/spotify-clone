@@ -284,18 +284,18 @@ color: black;
     cursor: pointer;
     padding: 10px;
     border-radius: 50%;
-    transition: background 0.2s ease;
-    z-index: 100;
+    /* transition: background 0.2s ease; */
+    /* z-index: 100; */
   }
   
-  .hamburger:hover {
-    background: #282828;
-  }
+  /* .hamburger:hover {
+    /* background: #282828; */
   
-  .hamburger img {
+
+  /* .hamburger img {
     height: 24px;
-    filter: invert(1);
-  }
+    /* filter: invert(1); */
+  
   
   .left1 {
     /* position: fixed; */
