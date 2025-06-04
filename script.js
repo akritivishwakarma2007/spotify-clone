@@ -1,7 +1,8 @@
 let currentSong = new Audio();
 let songs = [];
 let currFolder = '';
-const baseUrl = 'http://127.0.0.1:3002/'; // ✅ Port changed to 3002
+const baseUrl = `${window.location.origin}/`;
+// / ✅ Port changed to 3002
 
 function secondsToMinutesSeconds(seconds) {
   if (isNaN(seconds) || seconds < 0) return '00:00';
